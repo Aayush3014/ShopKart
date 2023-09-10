@@ -4,10 +4,10 @@ from django.shortcuts import render,redirect
 
 
 def signup(request):
-    return render(request, "authentication/signup.html")
+    return render(request, "signup.html")
 
 def handlelogin(request):
-    return render(request, "authentication/login.html")
+    return render(request, "login.html")
 
-def logout(request):
+def handlelogout(request):
     return redirect("/auth/login")
