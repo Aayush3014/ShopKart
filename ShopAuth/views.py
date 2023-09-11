@@ -17,6 +17,9 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 
 
+# Importing this for Login.
+from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 
 
@@ -95,6 +98,31 @@ class ActivateAccountView(View):
 
 
 def handlelogin(request):
+    
+    if request.method == "POST":
+
+        username = request.POST['email']
+        userpassword = request.POST['pass1']
+        myuser = authenticate(username=username, password=userpassword)
+
+
+        if myuser is not None:
+            login(request,myuser)
+            messages.success(request, "Login Success")
+            return redirect("/")
+        
+        else:
+            messages.error(request, "Invalid Credentials")
+            return redirect("/auth/login/")
+    return render(request, "login.html")
+
+
+
+
+
+
+
+
     return render(request, "login.html")
 
 def handlelogout(request):

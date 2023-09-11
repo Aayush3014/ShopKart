@@ -54,14 +54,29 @@
           <li><a class="nav-link scrollto" href="/about">About</a></li>
           <li><a class="nav-link scrollto" href="/about">Orders</a></li>
           <li><a class="nav-link scrollto" href="/about">My Profile</a></li>
+          
+          
+          {% if request.user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+
+
+          {% else %}
+          
           <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'signup' %}">Sign Up</a></li>
               <li><a href="{% url 'login' %}">LogIn</a></li>
-              <li><a href="{% url 'logout' %}">Logout</a></li>
               
             </ul>
           </li>
+          
+          {% endif %}
+          
+          
+          
+          
+          
+          
           <li><a class="nav-link scrollto bg-danger p-3 m-2" href="/contact">Cart</a></li>
           <li><a class="nav-link scrollto bg-dark p-3 m-2" href="/contact">Contact</a></li>
           
