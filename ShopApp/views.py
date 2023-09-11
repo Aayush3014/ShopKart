@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from ShopApp.models import Contact
+from django.contrib import messages
 # Create your views here.
 
 
@@ -8,6 +9,15 @@ def index(request):
 
 
 def contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        description = request.POST.get("desc")
+        phone_number = request.POST.get("pnumber")
+
+        query = Contact(name=name, email=email, description=description, phone_number=phone_number)
+        query.save()
+        messages.success(request, "We will get back to you soon...")
     return render(request, 'contact.html')
 
 
