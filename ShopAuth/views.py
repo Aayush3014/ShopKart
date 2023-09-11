@@ -88,15 +88,6 @@ class ActivateAccountView(View):
 
 
 
-
-
-
-
-
-
-
-
-
 def handlelogin(request):
     
     if request.method == "POST":
@@ -118,12 +109,7 @@ def handlelogin(request):
 
 
 
-
-
-
-
-
-    return render(request, "login.html")
-
 def handlelogout(request):
+    logout(request)
+    messages.info(request, "User has been Logged out.")
     return redirect("/auth/login")
