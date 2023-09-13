@@ -14,7 +14,7 @@ class Contact(models.Model):
 
 
 class Product(models.Model):
-    # product_id = models.AutoField
+    product_id = models.AutoField
     product_name = models.CharField(max_length=100)
     category = models.CharField(max_length=100, default="")
     subcategory = models.CharField(max_length=100, default="")
