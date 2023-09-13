@@ -22,7 +22,7 @@ class Product(models.Model):
     desc = models.TextField(max_length=1000)
 
 
-    image = models.ImageField(upload_to='images/images', default="")
+    image = models.ImageField(upload_to='images', default="")
 
 
     def __str__(self):
