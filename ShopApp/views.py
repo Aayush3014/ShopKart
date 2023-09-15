@@ -5,7 +5,17 @@ from math import ceil
 
 
 # Payment Integration.
-from . import keys
+from ShopApp import keys
+from django.conf import settings
+MERCHANT_KEY=keys.MK
+import json
+from django.views.decorators.csrf import  csrf_exempt
+from PayTm import Checksum
+
+
+
+
+
 
 
 def index(request):
@@ -107,7 +117,7 @@ def about(request):
 
 
 def checkout(request):
-    def checkout(request):
+
         if not request.user.is_authenticated:
             messages.warning(request,"Login & Try Again")
             return redirect('/auth/login')
