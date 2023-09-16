@@ -141,7 +141,7 @@ def checkout(request):
             paid = True
 
 
-            # # PAYMENT INTEGRATION
+            # PAYMENT INTEGRATION
 
             id = Order.order_id
             oid=str(id)+"ShopyCart"
@@ -161,3 +161,40 @@ def checkout(request):
             return render(request, 'paytm.html', {'param_dict': param_dict})
 
         return render(request, 'checkout.html')
+
+
+
+
+
+@csrf_exempt
+def handlerequest(request):
+    # paytm will send you post request here
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print('order successful')
+            a=response_dict['ORDERID']
+            b=response_dict['TXNAMOUNT']
+            rid=a.replace("ShopyCart","")
+           
+            print(rid)
+            filter2= Orders.objects.filter(order_id=rid)
+            print(filter2)
+            print(a,b)
+            for post1 in filter2:
+
+                post1.oid=a
+                post1.amountpaid=b
+                post1.paymentstatus="PAID"
+                post1.save()
+            print("run agede function")
+        else:
+            print('order was not successful because' + response_dict['RESPMSG'])
+    return render(request, 'paymentstatus.html', {'response': response_dict})
