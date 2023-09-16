@@ -141,7 +141,7 @@ def checkout(request):
             paid = True
 
 
-            # # PAYMENT INTEGRATION
+            # PAYMENT INTEGRATION
 
             id = Order.order_id
             oid=str(id)+"ShopyCart"
@@ -160,7 +160,7 @@ def checkout(request):
             param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
             return render(request, 'paytm.html', {'param_dict': param_dict})
 
-        return render(request, 'checkout.html', {'param_dict':param_dict})
+        return render(request, 'checkout.html')
 
 
 
