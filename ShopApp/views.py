@@ -198,3 +198,28 @@ def handlerequest(request):
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'paymentstatus.html', {'response': response_dict})
+
+
+
+
+
+def profile(request):
+    if not request.user.is_authenticated:
+        messages.warning(request,"Login & Try Again")
+        return redirect('/auth/login')
+    current_user = request.user.email
+    print(current_user)
+    items = Orders.objects.filter(email=current_user)
+    myid=""
+    for i in items:
+        # print(i.oid)
+        print(i.order_id)
+        myid=i.order_id
+
+    status=OrderUpdate.objects.filter(order_id=int(myid))
+
+    for j in status:
+        print(j.update_desc)
+
+    context ={"items":items,"status":status}
+    return render(request,"profile.html",context)
