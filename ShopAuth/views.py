@@ -20,6 +20,8 @@ from django.conf import settings
 # Importing this for Login.
 from django.contrib.auth import authenticate, login, logout
 
+
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -113,3 +115,9 @@ def handlelogout(request):
     logout(request)
     messages.info(request, "User has been Logged out.")
     return redirect("/auth/login")
+
+
+
+@login_required
+def profilepage(request):
+    return render(request,'profile.html')

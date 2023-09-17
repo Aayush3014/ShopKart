@@ -222,4 +222,4 @@ def order(request):
         print(j.update_desc)
 
     context ={"items":items,"status":status}
-    return render(request,"profile.html",context)
+    return render(request,"order.html",context)
