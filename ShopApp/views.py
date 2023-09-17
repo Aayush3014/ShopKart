@@ -203,7 +203,7 @@ def handlerequest(request):
 
 
 
-def profile(request):
+def order(request):
     if not request.user.is_authenticated:
         messages.warning(request,"Login & Try Again")
         return redirect('/auth/login')
