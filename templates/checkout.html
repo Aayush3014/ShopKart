@@ -48,7 +48,7 @@ Check Out
                    <nav aria-label="breadcrumb">
          <ol class="breadcrumb mt-3">
            <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalprice"></span> <span id="amount"></span></b>. Enter your details below & place your order. Thanks for using Shopping Cart</li>
-           <li></li>
+           <li</li>
          </ol>
        </nav>
        
@@ -160,8 +160,7 @@ $('#itemsJson').val(JSON.stringify(cart));
 
 
 
-{% if paid %}
-
+{% if thank %}
 alert('Thanks for ordering with us. Your order is is {{id}}. Use it to track your order using our order tracker');
 localStorage.clear();
 document.location = "/";

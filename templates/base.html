@@ -29,6 +29,11 @@
   <link href="{% static '/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static '/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
   <!-- Template Main CSS File -->
   <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
 
@@ -50,10 +55,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="/blog">Blog</a></li>
           <li><a class="nav-link scrollto" href="/about">About</a></li>
           <li><a class="nav-link scrollto" href="/checkout">Checkout</a></li>
-          <li><a class="nav-link scrollto" href="/about">My Profile</a></li>
+          <li><a class="nav-link scrollto" href="/order"><i class="fa-regular fa-square-user"></i> My Orders</a></li>
           
 
           <button type="button" class="nav-link scrollto bg-danger p-3 m-2 text-white" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" ><i class="fa-solid fa-cart-shopping"></i>  Cart (<span id="cart">0</span>)
@@ -62,14 +66,15 @@
           
           
           {% if request.user.is_authenticated %}
-          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout<i class="fa-solid fa-right-from-bracket"></i></a></li>
 
 
           {% else %}
           
-          <li class="dropdown"><a href="#"><span>Sign Up</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>SignIn <i class="fa-solid fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
+
             <ul>
-              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up<i class="fa-solid fa-user"></i></a></li>
               <li><a href="{% url 'login' %}">LogIn</a></li>
               
             </ul>
@@ -83,7 +88,7 @@
           
           
          
-          <li><a class="nav-link scrollto bg-dark p-3 m-2" href="/contact">Contact</a></li>
+          <li><a class="nav-link scrollto bg-dark p-3 m-2" href="/contact">Contact<i class="fa-solid fa-message-middle"></i></a></li>
           
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -146,7 +151,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Tempo</h3>
+            <h3>ShopKArt</h3>
             <p>
               A108 Adam Street <br>
               New York, NY 535022<br>
@@ -159,8 +164,8 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">About us</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
@@ -194,14 +199,14 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Tempo</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>ShopKart</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/tempo-free-onepage-bootstrap-theme/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
